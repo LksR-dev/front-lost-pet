@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import css from './hamburguer-button.css';
+import { useRecoilState } from 'recoil';
+import { burguerButtonState } from '../../atoms';
 
 type HamburguerBtn = {
 	actionButton: () => void;
 };
 
-function HamburguerButton(props: HamburguerBtn) {
-	const [isToggle, setToggle] = useState(false);
-
-	const handleButton = () => {};
+function HamburguerButton(props) {
+	const [isToggle, setToggle] = useRecoilState(burguerButtonState);
 
 	return (
-		<div className={css.burger__container} onClick={handleButton}>
+		<div className={css.burger__container} onClick={() => setToggle(!isToggle)}>
 			<div
 				className={
 					isToggle ? `${css.burguer__btn} ${css.clicked}` : `${css.burguer__btn} ${css.unclicked}`
@@ -30,3 +30,5 @@ function HamburguerButton(props: HamburguerBtn) {
 		</div>
 	);
 }
+
+export { HamburguerButton };

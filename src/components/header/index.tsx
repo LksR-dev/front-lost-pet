@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// COMPONETS
 import { Menu } from '../menu';
-import { CustomLink } from '../../ui/nav';
-// CSS AND MEDIA
 import css from './index.css';
+
 const defaultSvg = require('../../assets/logo.svg');
 
 function Header(): JSX.Element {
