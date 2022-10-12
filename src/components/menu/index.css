@@ -1,6 +1,12 @@
+@media (min-width: 749px) {
+	.root {
+		display: none;
+	}
+}
+
 .burger__container {
 	width: 40px;
-	height: 40px;
+	height: 30px;
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
@@ -8,33 +14,54 @@
 }
 
 .burguer__btn {
-	width: 100%;
-	height: 6px;
+	width: 80%;
+	height: 5px;
 	background-color: black;
-	margin-bottom: 5px;
 	border-radius: 2px;
+	margin-bottom: 2px;
 }
 
-.burguer__btn:last-child {
-	margin: 0;
-}
-
+/***ANIMATIONS***/
+/*Open*/
 .clicked:nth-child(1) {
-	transform: rotate(45deg) translate(12px, 20px);
+	transform: rotate(45deg) translate(2px, 12px);
 	transition: ease-out 0.5s;
 }
 
 .clicked:nth-child(2) {
-	transform: scale(0.1);
+	transform: scale(0.01);
 	transition: ease-out 0.5s;
 }
 
 .clicked:nth-child(3) {
-	transform: rotate(135deg) translate(-4px, 12px);
+	transform: rotate(135deg) translate(-3px, 15px);
 	transition: ease-out 0.5s;
 }
 
+/*Close*/
 .unclicked {
 	transform: rotate(0) translate(0);
 	transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+}
+
+.nav__ul {
+	list-style: none;
+	display: none;
+}
+
+.nav__ul.open {
+	position: relative;
+}
+
+.nav__li {
+}
+
+.link {
+	text-decoration: none;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+	text-align: center;
+	line-height: 18px;
+	color: #000;
 }

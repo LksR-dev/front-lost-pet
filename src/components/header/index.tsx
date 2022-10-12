@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // COMPONETS
 import { Menu } from '../menu';
+import { CustomLink } from '../../ui/nav';
 // CSS AND MEDIA
 import css from './index.css';
 const defaultSvg = require('../../assets/logo.svg');
@@ -10,19 +11,25 @@ function Header(): JSX.Element {
 	const logo: string = defaultSvg.default;
 	return (
 		<header className={css.root}>
-			<img src={logo} alt='logo.svg' />
-			<nav className={css.nav}>
-				<Link className={css.link} to={'/'}>
-					Mis datos
-				</Link>
-				<Link className={css.link} to={'/'}>
-					Reportar mascotas
-				</Link>
-				<Link className={css.link} to={'/'}>
-					Mis mascotas reportadas
-				</Link>
-			</nav>
+			<img className={css.logo} src={logo} alt='logo.svg' />
 
+			<ul className={css.nav__ul}>
+				<li className={css.nav__li}>
+					<Link className={css.link} to={'my-data'}>
+						Mis datos
+					</Link>
+				</li>
+				<li className={css.nav__li}>
+					<Link className={css.link} to={'report-pet'}>
+						Reportar mascota
+					</Link>
+				</li>
+				<li className={css.nav__li}>
+					<Link className={css.link} to={'my-pets'}>
+						Mis mascotas
+					</Link>
+				</li>
+			</ul>
 			<Menu />
 		</header>
 	);
