@@ -9,7 +9,9 @@ function Header(): JSX.Element {
 	const logo: string = defaultSvg.default;
 	return (
 		<header className={css.root}>
-			<img className={css.logo} src={logo} alt='logo.svg' />
+			<Link to={'/'}>
+				<img className={css.logo} src={logo} alt='logo.svg' />
+			</Link>
 
 			<ul className={css.nav__ul}>
 				<li className={css.nav__li}>

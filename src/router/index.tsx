@@ -1,12 +1,14 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from '../components/layout';
-import { Home } from '../pages/Home';
+import { Home } from '../pages/home/Home';
 
 function AppRoutes() {
 	return (
 		<Routes>
-			<Route path='/' element={<Layout />}></Route>
+			<Route path='/' element={<Layout />}>
+				<Route index element={<Home />}></Route>
+			</Route>
 		</Routes>
 	);
 }

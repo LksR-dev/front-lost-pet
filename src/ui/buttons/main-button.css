@@ -1,0 +1,20 @@
+.btn {
+	border-radius: 5px;
+	width: 200px;
+	height: 50px;
+	margin-left: 10px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.btn.green {
+	background-color: #00e2b1;
+}
+
+.btn.yellow {
+	background-color: #f9f871;
+}
+
+.btn.gray {
+	background-color: #a1acbd;
+}
