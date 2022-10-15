@@ -2,15 +2,31 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { getPetsAroundTo } from '../lib/api';
+import { atom, selector } from 'recoil';
+import { recoilPersist } from 'recoil-persist';
+const { persistAtom } = recoilPersist();
 
-function useLatLngLocalStorage(userData?: { lat: number; lng: number }): JSON {
-	localStorage.setItem('userData', JSON.stringify(userData));
-	return JSON.parse(localStorage.getItem('userData'));
-}
+export const userDataState = atom({
+	key: 'userData',
+	default: {},
+	effects_UNSTABLE: [persistAtom],
+});
+export const useUserData = () => {
+	return useRecoilState(userDataState);
+};
 
-async function useGetPetsAround(lat, lng): Promise<any> {
-	const pets = await getPetsAroundTo(lat, lng);
-	return pets;
-}
+export const burguerButtonState = atom({
+	key: 'buttonState',
+	default: false,
+});
+export const useBurguerButton = () => {
+	return useRecoilState(burguerButtonState);
+};
 
-export { useLatLngLocalStorage, useGetPetsAround };
+export const goToState = atom({
+	key: 'goTo',
+	default: '',
+});
+export const goTo = () => {
+	return useRecoilState(goToState);
+};

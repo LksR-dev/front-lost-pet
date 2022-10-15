@@ -6,4 +6,11 @@ async function getPetsAroundTo(lat: number, lng: number) {
 	return data;
 }
 
-export { getPetsAroundTo };
+
+async function checkEmail(email: string) {
+	const res = await fetch(`${API_BASE_URL}//auth/email`);
+	const data = await res.json();
+	return data;
+}
+
+export { getPetsAroundTo, checkEmail };
