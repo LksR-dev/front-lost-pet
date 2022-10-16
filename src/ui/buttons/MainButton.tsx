@@ -4,7 +4,7 @@ import css from './main-button.css';
 type MainButton = {
 	children: string;
 	color: 'green' | 'yellow' | 'gray';
-	action: () => void;
+	action?: () => void;
 };
 
 export function Button(props: MainButton) {

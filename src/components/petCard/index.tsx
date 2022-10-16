@@ -7,7 +7,7 @@ type PetCard = {
 	ubication: string;
 };
 
-function PetCard(props: PetCard) {
+export function PetCard(props: PetCard) {
 	return (
 		<div className={css.card__container}>
 			<div className={css.card__top}>
@@ -20,5 +20,3 @@ function PetCard(props: PetCard) {
 		</div>
 	);
 }
-
-export { PetCard };

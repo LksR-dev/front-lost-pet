@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { getPetsAroundTo } from '../lib/api';
 import { atom, selector } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 const { persistAtom } = recoilPersist();
@@ -27,6 +26,6 @@ export const goToState = atom({
 	key: 'goTo',
 	default: '',
 });
-export const goTo = () => {
+export const useGoTo = () => {
 	return useRecoilState(goToState);
 };

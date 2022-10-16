@@ -3,7 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { Header } from '../header';
 import css from './index.css';
 
-function Layout(): JSX.Element {
+export function Layout(): JSX.Element {
 	return (
 		<>
 			<Header />
@@ -11,5 +11,3 @@ function Layout(): JSX.Element {
 		</>
 	);
 }
-
-export { Layout };

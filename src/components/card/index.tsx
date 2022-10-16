@@ -7,7 +7,7 @@ type Result = {
 	thumbnail: string;
 };
 
-function ShowResults(props: Result) {
+export function ShowResults(props: Result) {
 	return (
 		<section>
 			<div className={css.card_container}>
@@ -22,5 +22,3 @@ function ShowResults(props: Result) {
 		</section>
 	);
 }
-
-export { ShowResults };

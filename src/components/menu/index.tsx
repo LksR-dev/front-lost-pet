@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { burguerButtonState, useUserData } from '../../hooks';
+import { burguerButtonState, useUserData, useGoTo } from '../../hooks';
 import { HamburguerButton } from '../../ui/buttons/HamburguerButton';
 import { Button } from '../../ui/buttons/MainButton';
 import css from './index.css';
 
-function Menu(): JSX.Element {
+export function Menu(): JSX.Element {
 	const [isToggle, setToggle] = useRecoilState(burguerButtonState);
 	const [userData, setUserData] = useUserData();
+	const [goTo, setGoTo] = useGoTo();
 	const navigate = useNavigate();
 
 	const handleLink = (e) => {
@@ -25,8 +26,13 @@ function Menu(): JSX.Element {
 					break;
 			}
 		} else {
+			setGoTo(e.target.id);
 			navigate('verify-email');
 		}
+	};
+
+	const closeSession = () => {
+		setUserData({});
 	};
 
 	return (
@@ -42,23 +48,23 @@ function Menu(): JSX.Element {
 					</p>
 				</li>
 				<li className={css.nav__li}>
+					<p className={css.link} onClick={handleLink} id='my-pets'>
+						Mis mascotas
+					</p>
+				</li>
+				<li className={css.nav__li}>
 					<p className={css.link} onClick={handleLink} id='report-pet'>
 						Reportar mascota
 					</p>
 				</li>
-				<li className={css.nav__li}>
-					<p className={css.link} onClick={handleLink} id='my-pets'>
-						Mis mascotas reportadas
-					</p>
-				</li>
 
-				<div>
-					<p>mailmockup@gmail.com</p>
-					<Button action={() => {}} children={'Cerrar sesion'} color={'yellow'} />
-				</div>
+				{userData.email ? (
+					<div>
+						<p>{userData.email}</p>
+						<Button action={closeSession} children={'Cerrar sesion'} color={'yellow'} />
+					</div>
+				) : null}
 			</ul>
 		</section>
 	);
 }
-
-export { Menu };

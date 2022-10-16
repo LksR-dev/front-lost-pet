@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import css from './hamburguer-button.css';
 import { useRecoilState } from 'recoil';
-import { useBurguerButton } from '../../hooks/index';
+import { useBurguerButton } from '../../hooks';
 
 type HamburguerBtn = {
 	actionButton: () => void;
 };
 
-function HamburguerButton(props) {
+export function HamburguerButton(props) {
 	const [isToggle, setToggle] = useBurguerButton();
 
 	return (
@@ -30,5 +30,3 @@ function HamburguerButton(props) {
 		</div>
 	);
 }
-
-export { HamburguerButton };

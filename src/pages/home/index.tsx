@@ -2,7 +2,7 @@ import React from 'react';
 import { ShowPetsAroundTo } from '../../components/petsAroundTo';
 import css from './index.css';
 
-function Home() {
+export function Home() {
 	return (
 		<main className={css.main__container}>
 			<h2 className={css.main__title}>Dar mi ubicación para buscar mascotas perdidas.</h2>
@@ -10,5 +10,3 @@ function Home() {
 		</main>
 	);
 }
-
-export { Home };

@@ -5,7 +5,7 @@ import { useUserData } from '../../hooks';
 import { getPetsAroundTo } from '../../lib/api';
 import css from './index.css';
 
-function ShowPetsAroundTo() {
+export function ShowPetsAroundTo() {
 	const [pets, setPets] = useState([]);
 	const [userData, setUserData] = useUserData();
 
@@ -45,5 +45,3 @@ function ShowPetsAroundTo() {
 		</section>
 	);
 }
-
-export { ShowPetsAroundTo };

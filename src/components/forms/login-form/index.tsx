@@ -1,0 +1,53 @@
+import React from 'react';
+import { Input } from '../../../ui/inputs';
+import { Button } from '../../../ui/buttons/MainButton';
+import { checkEmail } from '../../../lib/api';
+import { useUserData } from '../../../hooks';
+import css from './index.css';
+
+type LoginForm = {
+	labelText: string;
+	inputName: 'email' | 'password';
+	inputType: 'email' | 'password';
+	inputPlaceH: string;
+	onLogin: ({}) => any;
+};
+
+export function LoginForm(props: LoginForm): JSX.Element {
+	const [userDataState, setUserData] = useUserData();
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		if (e.target.email) {
+			const email: string = e.target.email.value;
+			const resp = await checkEmail(email);
+			const userData = {
+				email: resp.email,
+				fullname: resp.fullname,
+			};
+			setUserData({ ...userDataState, email, fullname: resp.fullname });
+			props.onLogin({ userData });
+		}
+
+		if (e.target.password) {
+			// const password: string = e.target.password.value;
+			// const resp = await checkEmail(password);
+			// const userData = {
+			// 	email: resp.email,
+			// 	fullname: resp.fullname,
+			// };
+			// props.onLogin({ userData });
+		}
+	};
+
+	return (
+		<form onSubmit={handleSubmit}>
+			<label>
+				{props.labelText}
+				<Input name={props.inputName} type={props.inputType} placeholder={props.inputPlaceH} />
+			</label>
+			<Button color='green' children='Siguiente' />
+		</form>
+	);
+}

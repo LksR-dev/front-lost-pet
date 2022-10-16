@@ -5,7 +5,7 @@ import css from './index.css';
 
 const defaultSvg = require('../../assets/logo.svg');
 
-function Header(): JSX.Element {
+export function Header(): JSX.Element {
 	const logo: string = defaultSvg.default;
 	return (
 		<header className={css.root}>
@@ -20,13 +20,13 @@ function Header(): JSX.Element {
 					</Link>
 				</li>
 				<li className={css.nav__li}>
-					<Link className={css.link} to={'report-pet'}>
-						Reportar mascota
+					<Link className={css.link} to={'my-pets'}>
+						Mis mascotas
 					</Link>
 				</li>
 				<li className={css.nav__li}>
-					<Link className={css.link} to={'my-pets'}>
-						Mis mascotas
+					<Link className={css.link} to={'report-pet'}>
+						Reportar mascota
 					</Link>
 				</li>
 			</ul>
@@ -34,5 +34,3 @@ function Header(): JSX.Element {
 		</header>
 	);
 }
-
-export { Header };
