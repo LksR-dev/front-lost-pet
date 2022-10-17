@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { burguerButtonState, useUserData, useGoTo } from '../../hooks';
-import { HamburguerButton } from '../../ui/buttons/HamburguerButton';
-import { Button } from '../../ui/buttons/MainButton';
+import { burguerButtonState, useUserData, useGoTo } from 'hooks';
+import { HamburguerButton } from 'ui/buttons/HamburguerButton';
+import { Button } from 'ui/buttons/MainButton';
 import css from './index.css';
 
 export function Menu(): JSX.Element {
@@ -26,7 +26,7 @@ export function Menu(): JSX.Element {
 					break;
 			}
 		} else {
-			setGoTo(e.target.id);
+			setGoTo(`/${e.target.id}`);
 			navigate('verify-email');
 		}
 	};

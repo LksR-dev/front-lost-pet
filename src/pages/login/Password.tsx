@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LoginForm } from '../../components/forms/login-form';
+import { LoginForm } from 'components/forms/login-form';
+import { useGoTo } from 'hooks';
 
 export function PasswordLogin(): JSX.Element {
-	const [emailExists, setEmailExists] = useState(false);
+	const [goTo, setGoTo] = useGoTo();
+	const [passwordExists, setPasswordExists] = useState(true);
 	const navigate = useNavigate();
 
-	const getEmail = async (userAccount) => {
-		if (userAccount == null) {
-			navigate('my-data');
-		}
-		if (userAccount !== null) {
-			setEmailExists(true);
+	const getEmail = async (isLogged) => {
+		if (isLogged.login) {
+			navigate(goTo);
+		} else {
+			setPasswordExists(false);
 		}
 	};
 
@@ -22,10 +23,11 @@ export function PasswordLogin(): JSX.Element {
 				inputName='password'
 				inputType='password'
 				inputPlaceH='password'
-				onLogin={(userAccount) => {
-					return getEmail(userAccount);
+				onLogin={(isLogged) => {
+					return getEmail(isLogged);
 				}}
 			/>
+			{passwordExists ? null : <p>La contraseña es incorrecta</p>}
 		</main>
 	);
 }

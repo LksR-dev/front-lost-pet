@@ -1,6 +1,8 @@
 .root {
 	height: 47px;
-	width: 200px;
+	width: 275px;
 	border-radius: 5px;
 	border-style: none;
+	font-size: 17px;
+	padding: 5px;
 }

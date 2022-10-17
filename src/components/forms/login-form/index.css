@@ -1,0 +1,13 @@
+.form__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 40px auto 0;
+}
+
+.label__container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 25px;
+}

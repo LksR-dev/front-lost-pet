@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Layout } from '../components/layout';
-import { Home } from '../pages/home';
-import { MyData } from '../pages/mydata';
-import { MyPets } from '../pages/mypets';
-import { ReportPet } from '../pages/reportpet';
-import { EmailLogin } from '../pages/login/Email';
-import { PasswordLogin } from '../pages/login/Password';
+import { Layout } from 'components/layout';
+import { Home } from 'pages/home';
+import { MyData } from 'pages/mydata';
+import { MyPets } from 'pages/mypets';
+import { ReportPet } from 'pages/reportpet';
+import { EmailLogin } from 'pages/login/Email';
+import { PasswordLogin } from 'pages/login/Password';
 
 export function AppRoutes() {
 	return (
@@ -17,7 +17,7 @@ export function AppRoutes() {
 				<Route path='my-pets' element={<MyPets />} />
 				<Route path='report-pet' element={<ReportPet />} />
 				<Route path='verify-email' element={<EmailLogin />} />
-				<Route path='/login' element={<PasswordLogin />} />
+				<Route path='login' element={<PasswordLogin />} />
 			</Route>
 		</Routes>
 	);

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Input } from '../../../ui/inputs';
-import { Button } from '../../../ui/buttons/MainButton';
-import { checkEmail } from '../../../lib/api';
-import { useUserData } from '../../../hooks';
+import { Input } from 'ui/inputs';
+import { Button } from 'ui/buttons/MainButton';
+import { checkEmail, getToken } from 'lib/api';
+import { useUserData } from 'hooks';
 import css from './index.css';
 
 type LoginForm = {
@@ -16,34 +16,41 @@ type LoginForm = {
 export function LoginForm(props: LoginForm): JSX.Element {
 	const [userDataState, setUserData] = useUserData();
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e): Promise<void> => {
 		e.preventDefault();
 
 		if (e.target.email) {
 			const email: string = e.target.email.value;
 			const resp = await checkEmail(email);
-			const userData = {
-				email: resp.email,
-				fullname: resp.fullname,
-			};
-			setUserData({ ...userDataState, email, fullname: resp.fullname });
-			props.onLogin({ userData });
+			// IF EMAIL EXISTS
+			if (resp !== null) {
+				const userData = {
+					email: resp.email,
+					fullname: resp.fullname,
+				};
+				setUserData({ ...userDataState, email, fullname: resp.fullname });
+				props.onLogin({ userData });
+				// IF EMAIL NOT EXISTS
+			} else {
+				props.onLogin({ userData: null });
+			}
 		}
-
 		if (e.target.password) {
-			// const password: string = e.target.password.value;
-			// const resp = await checkEmail(password);
-			// const userData = {
-			// 	email: resp.email,
-			// 	fullname: resp.fullname,
-			// };
-			// props.onLogin({ userData });
+			const password: string = e.target.password.value;
+			const resp: string = await getToken(userDataState.email, password);
+
+			if (resp === 'Email or password incorrect') {
+				props.onLogin({ login: false });
+			} else {
+				props.onLogin({ login: true });
+				setUserData({ ...userDataState, token: resp });
+			}
 		}
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label>
+		<form className={css.form__container} onSubmit={handleSubmit}>
+			<label className={css.label__container}>
 				{props.labelText}
 				<Input name={props.inputName} type={props.inputType} placeholder={props.inputPlaceH} />
 			</label>

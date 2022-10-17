@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '../../ui/buttons/MainButton';
-import { PetCard } from '../petCard';
-import { useUserData } from '../../hooks';
-import { getPetsAroundTo } from '../../lib/api';
+import { Button } from 'ui/buttons/MainButton';
+import { PetCard } from 'components/petCard';
+import { useUserData } from 'hooks';
+import { getPetsAroundTo } from 'lib/api';
 import css from './index.css';
 
 export function ShowPetsAroundTo() {

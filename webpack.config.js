@@ -1,6 +1,7 @@
 const path = require('path');
 const dev = process.env.NODE_ENV == 'development';
 const liveServer = require('live-server');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 if (dev) {
 	liveServer.start({
@@ -39,6 +40,11 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js'],
+		plugins: [
+			new TsconfigPathsPlugin({
+				configFile: './tsconfig.json',
+			}),
+		],
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),

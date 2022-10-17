@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu } from '../menu';
+import { Menu } from 'components/menu';
 import css from './index.css';
 
 const defaultSvg = require('../../assets/logo.svg');
 
 export function Header(): JSX.Element {
+	console.log(defaultSvg);
+
 	const logo: string = defaultSvg.default;
 	return (
 		<header className={css.root}>
 			<Link to={'/'}>
-				<img className={css.logo} src={logo} alt='logo.svg' />
+				<img className={css.logo} src={logo} />
 			</Link>
 
 			<ul className={css.nav__ul}>

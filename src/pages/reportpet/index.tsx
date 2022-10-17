@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShowPetsAroundTo } from '../../components/petsAroundTo';
+import { ShowPetsAroundTo } from 'components/petsAroundTo';
 
 export function ReportPet() {
 	return (

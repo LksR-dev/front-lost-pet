@@ -16,7 +16,21 @@ export async function checkEmail(email: string): Promise<any> {
 			email,
 		}),
 	});
+	const data = await res.json();
+	return data;
+}
 
+export async function getToken(email: string, password: string): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/auth/token`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			email,
+			password,
+		}),
+	});
 	const data = await res.json();
 	return data;
 }
