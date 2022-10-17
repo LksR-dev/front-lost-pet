@@ -25,6 +25,7 @@
 		"react-dom": "^18.2.0",
 		"react-image-show": "^0.3.4",
 		"react-router-dom": "^6.4.1",
+		"react-spring": "^9.5.5",
 		"recoil": "^0.7.5",
 		"recoil-persist": "^4.2.0",
 		"style-loader": "^3.3.1"

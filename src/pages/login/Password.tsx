@@ -27,7 +27,7 @@ export function PasswordLogin(): JSX.Element {
 					return getEmail(isLogged);
 				}}
 			/>
-			{passwordExists ? null : <p>La contraseña es incorrecta</p>}
+			{passwordExists ? null : <p style={{ margin: '20px auto' }}>La contraseña es incorrecta</p>}
 		</main>
 	);
 }

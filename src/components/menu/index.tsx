@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { burguerButtonState, useUserData, useGoTo } from 'hooks';
 import { HamburguerButton } from 'ui/buttons/HamburguerButton';
+import { CloseSessionButton } from 'ui/buttons/CloseSession';
 import { Button } from 'ui/buttons/MainButton';
 import css from './index.css';
 
@@ -31,10 +32,6 @@ export function Menu(): JSX.Element {
 		}
 	};
 
-	const closeSession = () => {
-		setUserData({});
-	};
-
 	return (
 		<section className={css.root}>
 			<HamburguerButton />
@@ -58,10 +55,10 @@ export function Menu(): JSX.Element {
 					</p>
 				</li>
 
-				{userData.email ? (
+				{userData.token ? (
 					<div>
 						<p>{userData.email}</p>
-						<Button action={closeSession} children={'Cerrar sesion'} color={'yellow'} />
+						<CloseSessionButton />
 					</div>
 				) : null}
 			</ul>

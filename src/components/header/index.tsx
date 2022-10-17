@@ -1,14 +1,16 @@
 import React from 'react';
+import { useUserData } from 'hooks';
 import { Link } from 'react-router-dom';
 import { Menu } from 'components/menu';
+import { CloseSessionButton } from 'ui/buttons/CloseSession';
 import css from './index.css';
 
 const defaultSvg = require('../../assets/logo.svg');
 
 export function Header(): JSX.Element {
-	console.log(defaultSvg);
-
 	const logo: string = defaultSvg.default;
+	const [userData, setUserData] = useUserData();
+
 	return (
 		<header className={css.root}>
 			<Link to={'/'}>
@@ -31,6 +33,7 @@ export function Header(): JSX.Element {
 						Reportar mascota
 					</Link>
 				</li>
+				<li>{userData.token ? <CloseSessionButton /> : null}</li>
 			</ul>
 			<Menu />
 		</header>

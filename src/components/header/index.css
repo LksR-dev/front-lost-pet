@@ -18,9 +18,9 @@
 @media (min-width: 749px) {
 	.nav__ul {
 		display: flex;
-		justify-content: center;
 		align-items: center;
-		width: 40%;
+		width: 80%;
+		margin-right: 20px;
 	}
 }
 
