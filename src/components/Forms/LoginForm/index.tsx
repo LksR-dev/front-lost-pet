@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'ui/inputs';
+import { InputLabel } from 'ui/inputs';
 import { Button } from 'ui/buttons/MainButton';
 import { checkEmail, getToken } from 'lib/api';
 import { useUserData } from 'hooks';
@@ -32,6 +32,7 @@ export function LoginForm(props: LoginForm): JSX.Element {
 				props.onLogin({ userData });
 				// IF EMAIL NOT EXISTS
 			} else {
+				setUserData({ ...userDataState, email });
 				props.onLogin({ userData: null });
 			}
 		}
@@ -50,10 +51,12 @@ export function LoginForm(props: LoginForm): JSX.Element {
 
 	return (
 		<form className={css.form__container} onSubmit={handleSubmit}>
-			<label className={css.label__container}>
-				{props.labelText}
-				<Input name={props.inputName} type={props.inputType} placeholder={props.inputPlaceH} />
-			</label>
+			<InputLabel
+				labelText={props.labelText}
+				name={props.inputName}
+				type={props.inputType}
+				placeholder={props.inputPlaceH}
+			/>
 			<Button color='green' children='Siguiente' />
 		</form>
 	);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LoginForm } from 'components/forms/login-form';
+import { LoginForm } from 'components/Forms/LoginForm';
 import { useGoTo } from 'hooks';
 
 export function PasswordLogin(): JSX.Element {

@@ -4,7 +4,6 @@ import { useRecoilState } from 'recoil';
 import { burguerButtonState, useUserData, useGoTo } from 'hooks';
 import { HamburguerButton } from 'ui/buttons/HamburguerButton';
 import { CloseSessionButton } from 'ui/buttons/CloseSession';
-import { Button } from 'ui/buttons/MainButton';
 import css from './index.css';
 
 export function Menu(): JSX.Element {

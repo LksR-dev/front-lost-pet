@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'ui/buttons/MainButton';
-import { PetCard } from 'components/petCard';
-import { LoaderLogo } from 'components/loader/LogoLoader';
+import { PetCard } from 'components/PetCard';
+import { LoaderLogo } from 'components/Loader/LogoLoader';
 import { useUserData } from 'hooks';
 import { getPetsAroundTo } from 'lib/api';
 import css from './index.css';

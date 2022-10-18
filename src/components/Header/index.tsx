@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUserData } from 'hooks';
 import { Link } from 'react-router-dom';
-import { Menu } from 'components/menu';
+import { Menu } from 'components/Menu';
 import { CloseSessionButton } from 'ui/buttons/CloseSession';
 import css from './index.css';
 

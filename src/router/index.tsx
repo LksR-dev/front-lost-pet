@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Layout } from 'components/layout';
+import { Layout } from 'components/Layout';
 import { Home } from 'pages/home';
 import { MyData } from 'pages/mydata';
 import { MyPets } from 'pages/mypets';
