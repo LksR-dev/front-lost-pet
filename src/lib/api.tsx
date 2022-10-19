@@ -1,3 +1,5 @@
+import { useUserData } from 'hooks';
+
 const API_BASE_URL = 'https://lost-pet-dwfm7.herokuapp.com';
 
 export async function getPetsAroundTo(lat: number, lng: number): Promise<[]> {
@@ -44,6 +46,22 @@ export async function getToken(email: string, password: string): Promise<any> {
 		},
 		body: JSON.stringify({
 			email,
+			password,
+		}),
+	});
+	const data = await res.json();
+	return data;
+}
+
+export async function updateDataUser(fullname, password, token): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/me`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `bearer ${token}`,
+		},
+		body: JSON.stringify({
+			fullname,
 			password,
 		}),
 	});

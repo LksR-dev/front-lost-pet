@@ -22,7 +22,7 @@ export function WarningCard(props: WarningCard) {
 			<div onClick={closeCard} className={css.icon__container}>
 				<img src={bonesPet} />
 			</div>
-			<h3>{props.title}</h3>
+			<h3 className={css.title}>{props.title}</h3>
 			<Button action={goTo} children={props.buttonText} color='green' />
 		</section>
 	);

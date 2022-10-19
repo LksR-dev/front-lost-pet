@@ -10,22 +10,16 @@ export const userDataState = atom({
 	default: {},
 	effects_UNSTABLE: [persistAtom],
 });
-export const useUserData = () => {
-	return useRecoilState(userDataState);
-};
+export const useUserData = () => useRecoilState(userDataState);
 
 export const burguerButtonState = atom({
 	key: 'buttonState',
 	default: false,
 });
-export const useBurguerButton = () => {
-	return useRecoilState(burguerButtonState);
-};
+export const useBurguerButton = () => useRecoilState(burguerButtonState);
 
 export const goToState = atom({
 	key: 'goTo',
 	default: '',
 });
-export const useGoTo = () => {
-	return useRecoilState(goToState);
-};
+export const useGoTo = () => useRecoilState(goToState);

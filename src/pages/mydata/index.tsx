@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useUserData } from 'hooks';
 import { CreateUserForm } from 'components/Forms/CreateUser';
+import { UpdateUserForm } from 'components/Forms/UpdateUser';
 import { WarningCard } from 'components/WarningCard';
 import css from './index.css';
 
 export function MyData() {
 	const [userDataState, setUserData] = useUserData();
-	const [hasUser, setHasUser] = useState(false);
+	const [hasNewUser, setHasUser] = useState(false);
 	const [closeCard, setCloseCard] = useState(false);
-	const navigate = useNavigate();
+	const token = userDataState.token;
 
 	const newUser = (hasNewUser) => {
 		if (hasNewUser.createUser) {
@@ -21,19 +21,18 @@ export function MyData() {
 			setCloseCard(true);
 		}
 	};
-
 	return (
 		<main className={css.main__container}>
-			{userDataState.token ? <h2>Mis datos</h2> : <h2>Registrarme</h2>}
-			<CreateUserForm
-				onLogin={(createUser) => {
-					newUser(createUser);
-				}}
-			/>
-			{hasUser && !closeCard ? (
+			{token ? <h2>Mis datos</h2> : <h2>Registrarme</h2>}
+			{token ? (
+				<UpdateUserForm onLogin={(createUser) => newUser(createUser)} />
+			) : (
+				<CreateUserForm onLogin={(createUser) => newUser(createUser)} />
+			)}
+			{hasNewUser && !closeCard ? (
 				<WarningCard
 					optionCard={(iconClose) => optionCard(iconClose)}
-					title='Te has registrado con exito'
+					title='Tus datos se cargaron correctamente.'
 					buttonText='Ir al inicio'
 				/>
 			) : null}
