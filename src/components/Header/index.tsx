@@ -5,7 +5,7 @@ import { Menu } from 'components/Menu';
 import { CloseSessionButton } from 'ui/buttons/CloseSession';
 import css from './index.css';
 
-const defaultSvg = require('../../assets/logo.svg');
+const defaultSvg = require('assets/logo.svg');
 
 export function Header(): JSX.Element {
 	const logo: string = defaultSvg.default;
