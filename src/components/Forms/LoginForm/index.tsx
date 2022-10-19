@@ -18,6 +18,7 @@ export function LoginForm(props: LoginForm): JSX.Element {
 
 	const handleSubmit = async (e): Promise<void> => {
 		e.preventDefault();
+		props.onLogin({ loader: true });
 
 		if (e.target.email) {
 			const email: string = e.target.email.value;
@@ -40,7 +41,7 @@ export function LoginForm(props: LoginForm): JSX.Element {
 			const password: string = e.target.password.value;
 			const resp: string = await getToken(userDataState.email, password);
 
-			if (resp === 'Email or password incorrect') {
+			if (resp === 'Email or password incorrect' || !resp) {
 				props.onLogin({ login: false });
 			} else {
 				props.onLogin({ login: true });

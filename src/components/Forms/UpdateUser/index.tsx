@@ -15,16 +15,14 @@ export function UpdateUserForm(props: LoginForm): JSX.Element {
 
 	const handleSubmit = async (e): Promise<void> => {
 		e.preventDefault();
-		const userName = e.target.name.value;
+		const userName: string = e.target.name.value;
 		const userPassword = e.target.password.value;
 		const userPasswordConfirm = e.target.passwordConfirm.value;
-		const token = userDataState.token;
+		const token: string = userDataState.token;
 
 		if (userPassword === userPasswordConfirm) {
-			console.log('Soy el console log del formulario, antes de llamar a la api');
-
 			await updateDataUser(userName, userPassword, token);
-			props.onLogin({ createUser: true });
+			props.onLogin({ updateUser: true });
 		} else {
 			setHassPassword(false);
 		}

@@ -31,21 +31,23 @@ export function ShowPetsAroundTo() {
 	};
 
 	return (
-		<section className={css.main__container}>
-			{pets ? (
-				pets.map((pet) => {
-					return (
-						<PetCard
-							key={pet.objectID}
-							name={pet.petName}
-							ubication={pet.ubication}
-							img={pet.img}
-						/>
-					);
-				})
-			) : (
-				<p>No hay mascotas cerca tuyo</p>
-			)}
+		<section>
+			<div className={css.main__container}>
+				{pets ? (
+					pets.map((pet) => {
+						return (
+							<PetCard
+								key={pet.objectID}
+								name={pet.petName}
+								ubication={pet.ubication}
+								img={pet.img}
+							/>
+						);
+					})
+				) : (
+					<p>No hay mascotas cerca tuyo</p>
+				)}
+			</div>
 
 			{loader ? <LoaderLogo /> : null}
 			{pets[0] ? null : (

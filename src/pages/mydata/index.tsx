@@ -5,18 +5,21 @@ import { UpdateUserForm } from 'components/Forms/UpdateUser';
 import { WarningCard } from 'components/WarningCard';
 import css from './index.css';
 
-export function MyData() {
+export function MyData(): JSX.Element {
 	const [userDataState, setUserData] = useUserData();
-	const [hasNewUser, setHasUser] = useState(false);
+	const [updateUser, setUpdateUser] = useState(false);
 	const [closeCard, setCloseCard] = useState(false);
-	const token = userDataState.token;
+	const token: string = userDataState.token;
 
-	const newUser = (hasNewUser) => {
+	const newOrUpdateUser = (hasNewUser): void => {
 		if (hasNewUser.createUser) {
-			setHasUser(true);
+			setUpdateUser(true);
+		}
+		if (hasNewUser.updateUser) {
+			setUpdateUser(true);
 		}
 	};
-	const optionCard = (iconClose) => {
+	const optionCard = (iconClose): void => {
 		if (iconClose) {
 			setCloseCard(true);
 		}
@@ -25,11 +28,11 @@ export function MyData() {
 		<main className={css.main__container}>
 			{token ? <h2>Mis datos</h2> : <h2>Registrarme</h2>}
 			{token ? (
-				<UpdateUserForm onLogin={(createUser) => newUser(createUser)} />
+				<UpdateUserForm onLogin={(createUser) => newOrUpdateUser(createUser)} />
 			) : (
-				<CreateUserForm onLogin={(createUser) => newUser(createUser)} />
+				<CreateUserForm onLogin={(createUser) => newOrUpdateUser(createUser)} />
 			)}
-			{hasNewUser && !closeCard ? (
+			{updateUser && !closeCard ? (
 				<WarningCard
 					optionCard={(iconClose) => optionCard(iconClose)}
 					title='Tus datos se cargaron correctamente.'
