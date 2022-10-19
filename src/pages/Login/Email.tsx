@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginForm } from 'components/Forms/LoginForm';
-import { LoaderLogo } from 'components/Loader/LogoLoader';
-import css from './index.css';
 
 export function EmailLogin(): JSX.Element {
 	const [loader, setLoader] = useState(false);
@@ -21,7 +19,7 @@ export function EmailLogin(): JSX.Element {
 	};
 
 	return (
-		<main className={css.main__container}>
+		<main>
 			<LoginForm
 				labelText='Email: '
 				inputName='email'
@@ -31,7 +29,6 @@ export function EmailLogin(): JSX.Element {
 					return getEmail(data);
 				}}
 			/>
-			{loader ? <LoaderLogo /> : null}
 		</main>
 	);
 }

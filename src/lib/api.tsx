@@ -68,3 +68,15 @@ export async function updateDataUser(fullname, password, token): Promise<any> {
 	const data = await res.json();
 	return data;
 }
+
+export async function getMyPets(token): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/me/pets`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `bearer ${token}`,
+		},
+	});
+	const data = await res.json();
+	return data;
+}

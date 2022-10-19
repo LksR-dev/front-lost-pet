@@ -18,8 +18,8 @@ export function Menu(): JSX.Element {
 				case 'my-data':
 					navigate('my-data');
 					break;
-				case 'report-pet':
-					navigate('report-pet');
+				case 'report-update':
+					navigate('report-update');
 					break;
 				case 'my-pets':
 					navigate('my-pets');
@@ -49,7 +49,7 @@ export function Menu(): JSX.Element {
 					</p>
 				</li>
 				<li className={css.nav__li}>
-					<p className={css.link} onClick={handleLink} id='report-pet'>
+					<p className={css.link} onClick={handleLink} id='report-update'>
 						Reportar mascota
 					</p>
 				</li>

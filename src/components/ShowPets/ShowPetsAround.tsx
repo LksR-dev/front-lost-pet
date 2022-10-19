@@ -10,6 +10,8 @@ export function ShowPetsAroundTo() {
 	const [pets, setPets] = useState([]);
 	const [loader, setLoader] = useState(false);
 	const [userData, setUserData] = useUserData();
+	const userLat = userData.lat;
+	const userLng = userData.lng;
 
 	function getCurrentUbication(): void {
 		navigator.geolocation.getCurrentPosition((position) => {
@@ -20,12 +22,17 @@ export function ShowPetsAroundTo() {
 			setUserData({ ...userData, lat, lng });
 		});
 	}
-
 	useEffect(() => {
 		setLoader(false);
 	}, [pets]);
 
+	useEffect(() => {
+		getPets(userLat, userLng);
+		setLoader(true);
+	}, [userLat]);
+
 	const getPets = async (lat: number, lng: number): Promise<void> => {
+		setLoader(true);
 		const pets = await getPetsAroundTo(lat, lng);
 		setPets(pets);
 	};
@@ -38,6 +45,7 @@ export function ShowPetsAroundTo() {
 						return (
 							<PetCard
 								key={pet.objectID}
+								id={pet.objectID}
 								name={pet.petName}
 								ubication={pet.ubication}
 								img={pet.img}
@@ -45,12 +53,12 @@ export function ShowPetsAroundTo() {
 						);
 					})
 				) : (
-					<p>No hay mascotas cerca tuyo</p>
+					<p>No hay mascotas cerca tuyo.</p>
 				)}
 			</div>
 
 			{loader ? <LoaderLogo /> : null}
-			{pets[0] ? null : (
+			{userLat && userLng ? null : (
 				<Button action={getCurrentUbication} color='green' children={'Dar mi ubicación'} />
 			)}
 		</section>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShowPetsAroundTo } from 'components/PetsAroundTo';
+import { ShowPetsAroundTo } from 'components/ShowPets/ShowPetsAround';
 import css from './index.css';
 
 export function Home() {

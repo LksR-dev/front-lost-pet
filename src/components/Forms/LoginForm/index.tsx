@@ -18,7 +18,6 @@ export function LoginForm(props: LoginForm): JSX.Element {
 
 	const handleSubmit = async (e): Promise<void> => {
 		e.preventDefault();
-		props.onLogin({ loader: true });
 
 		if (e.target.email) {
 			const email: string = e.target.email.value;
