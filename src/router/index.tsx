@@ -14,13 +14,14 @@ export function AppRoutes() {
 		<Routes>
 			<Route path='/' element={<Layout />}>
 				<Route index element={<Home />} />
+				<Route path='verify-email' element={<EmailLogin />} />
+				<Route path='login' element={<PasswordLogin />} />
 				<Route path='my-data' element={<MyData />} />
 				<Route path='my-pets' element={<MyPets />} />
 				<Route path='report-update' element={<ReportOrUpdatePet />}>
 					<Route path=':id' element={<ReportOrUpdatePet />} />
 				</Route>
-				<Route path='verify-email' element={<EmailLogin />} />
-				<Route path='login' element={<PasswordLogin />} />
+				<Route path='report-pet/:id' element={<ReportDataPet />} />
 			</Route>
 		</Routes>
 	);

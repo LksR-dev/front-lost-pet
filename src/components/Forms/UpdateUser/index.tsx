@@ -22,15 +22,20 @@ export function UpdateUserForm(props: LoginForm): JSX.Element {
 
 		if (userPassword === userPasswordConfirm) {
 			await updateDataUser(userName, userPassword, token);
+			setUserData({ ...userDataState, fullname: userName });
 			props.onLogin({ updateUser: true });
 		} else {
 			setHassPassword(false);
 		}
 	};
-
 	return (
 		<form className={css.form__container} onSubmit={handleSubmit}>
-			<InputLabel labelText='Nombre:' name='name' type='text' placeholder='Lucas' />
+			<InputLabel
+				labelText='Nombre:'
+				name='name'
+				type='text'
+				placeholder={userDataState.fullname}
+			/>
 			<InputLabel labelText='Contraseña' name='password' type='password' placeholder='••••••••' />
 			<InputLabel
 				labelText='Repetir contraseña'

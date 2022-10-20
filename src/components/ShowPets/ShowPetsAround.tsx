@@ -23,12 +23,14 @@ export function ShowPetsAroundTo() {
 		});
 	}
 	useEffect(() => {
-		setLoader(false);
+		if (pets) setLoader(false);
 	}, [pets]);
 
 	useEffect(() => {
-		getPets(userLat, userLng);
-		setLoader(true);
+		if (userLat && userLng) {
+			getPets(userLat, userLng);
+			setLoader(true);
+		}
 	}, [userLat]);
 
 	const getPets = async (lat: number, lng: number): Promise<void> => {
@@ -41,17 +43,15 @@ export function ShowPetsAroundTo() {
 		<section>
 			<div className={css.main__container}>
 				{pets ? (
-					pets.map((pet) => {
-						return (
-							<PetCard
-								key={pet.objectID}
-								id={pet.objectID}
-								name={pet.petName}
-								ubication={pet.ubication}
-								img={pet.img}
-							/>
-						);
-					})
+					pets.map((pet) => (
+						<PetCard
+							key={pet.objectID}
+							id={pet.objectID}
+							name={pet.petName}
+							ubication={pet.ubication}
+							img={pet.img}
+						/>
+					))
 				) : (
 					<p>No hay mascotas cerca tuyo.</p>
 				)}

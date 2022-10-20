@@ -18,11 +18,11 @@ export function PetCard(props: PetCard): JSX.Element {
 	const pencil = defaultSvg.default;
 
 	const goToReport = (petId): void => {
-		navigate(`${petId}`);
+		navigate(`report-pet/${petId}`);
 	};
 
 	const goToEdit = (petId): void => {
-		navigate(`/report-pet/${petId}`);
+		navigate(`/report-update/${petId}`);
 	};
 
 	useEffect(() => {

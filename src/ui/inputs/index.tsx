@@ -5,8 +5,8 @@ type Input = {
 	type: string;
 	name: string;
 	placeholder: string;
-	// required: boolean;
 	labelText: string;
+	action?: (e) => void;
 };
 
 export function InputLabel(props: Input) {
@@ -14,6 +14,7 @@ export function InputLabel(props: Input) {
 		<label className={css.container}>
 			{props.labelText}
 			<input
+				onChange={props.action}
 				className={css.root}
 				type={props.type}
 				name={props.name}

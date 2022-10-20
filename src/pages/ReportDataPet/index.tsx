@@ -4,7 +4,7 @@ import { ShowPetsAroundTo } from 'components/ShowPets/ShowPetsAround';
 export function ReportDataPet() {
 	return (
 		<main>
-			<h2>report pet.</h2>
+			<h2>He visto esta mascota.</h2>
 		</main>
 	);
 }
