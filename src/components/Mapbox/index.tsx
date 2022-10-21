@@ -37,8 +37,6 @@ export function Mapbox(): JSX.Element {
 
 	useEffect(() => {
 		map.current.on('click', (e) => {
-			console.log(e);
-
 			setLng(e.lngLat.lng);
 			setLat(e.lngLat.lat);
 		});

@@ -83,3 +83,24 @@ export async function getMyPets(token): Promise<any> {
 	const data = await res.json();
 	return data;
 }
+
+export async function postPet(petname, img, lat, lng, ubication, token): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/user/register-pet`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `bearer ${token}`,
+		},
+		body: JSON.stringify({
+			petname,
+			img,
+			lat,
+			lng,
+			ubication,
+		}),
+	});
+	const data = await res.json();
+	console.log(data);
+
+	return data;
+}

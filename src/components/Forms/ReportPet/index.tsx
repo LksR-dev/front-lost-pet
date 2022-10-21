@@ -3,7 +3,7 @@ import { MyDropzone } from 'components/Dropzone';
 import { Mapbox } from 'components/Mapbox';
 import { InputLabel } from 'ui/inputs';
 import { Button } from 'ui/buttons/MainButton';
-import { userAuth, getToken } from 'lib/api';
+import { userAuth, getToken, postPet } from 'lib/api';
 import { useUserData, usePetData } from 'hooks';
 import css from './index.css';
 
@@ -15,13 +15,21 @@ export function CreateUserForm(props: LoginForm): JSX.Element {
 	const [userDataState, setUserData] = useUserData();
 	const [hasPassword, setHassPassword] = useState(true);
 	const [petData, setPetData] = usePetData();
-	console.log(petData);
 
 	const handleSubmit = async (e): Promise<void> => {
 		e.preventDefault();
-		const petName = e.target.name.value;
+		const data = petData as any;
+		const img = data.img;
+		const lat = data.lat;
+		const lng = data.lng;
+		const ubication = data.ubication;
+		const petname = e.target.name.value;
+		setPetData({ ...petData, petname });
+		if (img && lat && lng && petname && ubication) {
+			console.log('entre al if');
 
-		setPetData({ ...petData, petName });
+			postPet(petname, img, lat, lng, ubication, userDataState.token);
+		}
 	};
 
 	return (
