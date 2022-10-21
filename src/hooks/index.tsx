@@ -23,3 +23,9 @@ export const goToState = atom({
 	default: '',
 });
 export const useGoTo = () => useRecoilState(goToState);
+
+export const petDataState = atom({
+	key: 'petData',
+	default: {},
+});
+export const usePetData = () => useRecoilState(petDataState);

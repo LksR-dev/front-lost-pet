@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { usePetData } from 'hooks';
 import css from './index.css';
 
 export function MyDropzone() {
 	const [img, setImg] = useState(null);
+	const [petData, setPetData] = usePetData();
+
 	const onDrop = useCallback(
 		(acceptedFiles) => {
 			acceptedFiles.forEach((file) => {
@@ -13,6 +16,7 @@ export function MyDropzone() {
 				reader.onload = (e) => {
 					const result = e.target.result;
 					setImg(result);
+					setPetData({ ...petData, img: result });
 				};
 				reader.readAsDataURL(file);
 			});
