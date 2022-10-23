@@ -8,8 +8,9 @@
 	width: 300px;
 	height: 222px;
 	background-color: #ffff;
-	position: absolute;
-	top: 158px;
+	position: fixed;
+	z-index: 1000;
+	transition: 0.3s;
 }
 
 .icon__container {

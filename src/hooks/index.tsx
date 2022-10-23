@@ -26,6 +26,12 @@ export const useGoTo = () => useRecoilState(goToState);
 
 export const petDataState = atom({
 	key: 'petData',
-	default: {},
+	default: {
+		lat: null,
+		lng: null,
+		ubication: '',
+		petname: '',
+		img: null,
+	},
 });
 export const usePetData = () => useRecoilState(petDataState);

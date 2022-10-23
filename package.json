@@ -26,6 +26,7 @@
 		"react-dom": "^18.2.0",
 		"react-dropzone": "^14.2.3",
 		"react-image-show": "^0.3.4",
+		"react-mapbox-gl": "^5.1.1",
 		"react-router-dom": "^6.4.1",
 		"react-spring": "^9.5.5",
 		"recoil": "^0.7.5",

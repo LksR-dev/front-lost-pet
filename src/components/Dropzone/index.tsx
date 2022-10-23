@@ -11,7 +11,6 @@ export function MyDropzone() {
 		(acceptedFiles) => {
 			acceptedFiles.forEach((file) => {
 				// Do whatever you want with the file   contents
-
 				const reader = new FileReader();
 				reader.onload = (e) => {
 					const result = e.target.result;
