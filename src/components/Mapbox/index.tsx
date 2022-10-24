@@ -11,9 +11,8 @@ const Map = ReactMapboxGl({
 	accessToken: mapbox_token,
 });
 
-export function Mapbox(): JSX.Element {
+export function Mapbox(props): JSX.Element {
 	const locationMarker = markerUrl.default;
-	const [locationClicked, setLocationClicked] = useState({ lat: null, lng: null });
 	const [loc, setLoc] = useState('');
 	const [petData, setPetData] = usePetData();
 	const [userData, setUserData] = useUserData();
@@ -63,6 +62,7 @@ export function Mapbox(): JSX.Element {
 				placeholder='Buenos Aires, Argentina'
 				labelText='Busca por ciudad, barrio, provincia...'
 				action={(e) => setLoc(e.target.value)}
+				value={props.ubication ? props.ubication : null}
 			/>
 			<div onClick={handleSearch} className={css.green__button}>
 				Marcar Ubicación

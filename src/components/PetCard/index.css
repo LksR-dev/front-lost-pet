@@ -1,6 +1,6 @@
 .card__container {
-	width: 250px;
-	height: 300px;
+	width: 275px;
+	height: 350px;
 	border: 1px solid #000;
 	border-radius: 5px;
 	margin: 0 auto 30px;
@@ -23,7 +23,7 @@
 .card__bottom {
 	display: flex;
 	align-items: center;
-	height: 120px;
+	height: 150px;
 }
 
 .card__bottom__text {

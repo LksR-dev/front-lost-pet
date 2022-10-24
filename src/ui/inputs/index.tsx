@@ -7,6 +7,7 @@ type Input = {
 	placeholder: string;
 	labelText: string;
 	action?: (e) => void;
+	value?: string;
 };
 
 export function InputLabel(props: Input) {
@@ -19,6 +20,7 @@ export function InputLabel(props: Input) {
 				type={props.type}
 				name={props.name}
 				placeholder={props.placeholder}
+				defaultValue={props.value}
 				required
 			/>
 		</label>

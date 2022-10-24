@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import { usePetData } from 'hooks';
 import css from './index.css';
 
-export function MyDropzone() {
+export function MyDropzone(props) {
 	const [img, setImg] = useState(null);
 	const [petData, setPetData] = usePetData();
 
@@ -27,7 +27,7 @@ export function MyDropzone() {
 	return (
 		<div className={css.img__container} {...getRootProps()}>
 			<input {...getInputProps()} />
-			<img className={css.img} src={img} />
+			<img className={css.img} src={img ? img : props.img} />
 			{isDragActive ? (
 				<p>Drop the files here ...</p>
 			) : (

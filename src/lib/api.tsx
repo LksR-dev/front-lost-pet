@@ -51,7 +51,7 @@ export async function getToken(email: string, password: string): Promise<any> {
 	return data;
 }
 
-export async function updateDataUser(fullname, password, token): Promise<any> {
+export async function updateDataUser(fullname: string, password, token: string): Promise<any> {
 	const res: Response = await fetch(`${API_BASE_URL}/me`, {
 		method: 'PUT',
 		headers: {
@@ -67,7 +67,7 @@ export async function updateDataUser(fullname, password, token): Promise<any> {
 	return data;
 }
 
-export async function getMyPets(token): Promise<any> {
+export async function getMyPets(token: string): Promise<any> {
 	const res: Response = await fetch(`${API_BASE_URL}/me/pets`, {
 		method: 'GET',
 		headers: {
@@ -79,7 +79,14 @@ export async function getMyPets(token): Promise<any> {
 	return data;
 }
 
-export async function postPet(petname, img, lat, lng, ubication, token): Promise<any> {
+export async function postPet(
+	petname: string,
+	img: string,
+	lat: number,
+	lng: number,
+	ubication: string,
+	token: string,
+): Promise<any> {
 	const res: Response = await fetch(`${API_BASE_URL}/user/register-pet`, {
 		method: 'POST',
 		headers: {
@@ -95,7 +102,60 @@ export async function postPet(petname, img, lat, lng, ubication, token): Promise
 		}),
 	});
 	const data = await res.json();
-	console.log(data);
+	return data;
+}
 
+export async function getOnePet(id: number, token: string): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/pet/${id}`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `bearer ${token}`,
+		},
+	});
+	const data = await res.json();
+	return data;
+}
+
+export async function updatePet(
+	id: number,
+	petname: string,
+	img: string,
+	lat: number,
+	lng: number,
+	ubication: string,
+	token: string,
+): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/me/pet/${id}`, {
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `bearer ${token}`,
+		},
+		body: JSON.stringify({
+			petname,
+			img,
+			lat,
+			lng,
+			ubication,
+		}),
+	});
+	const data = await res.json();
+	return data;
+}
+
+export async function deletePet(
+	id: number,
+
+	token: string,
+): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/me/pet/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `bearer ${token}`,
+		},
+	});
+	const data = await res.json();
 	return data;
 }
