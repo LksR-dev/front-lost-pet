@@ -16,7 +16,6 @@ export function PetRegisterForm(props: PetRegisterForm): JSX.Element {
 	const [userDataState, setUserData] = useUserData();
 	const [petData, setPetData] = usePetData();
 	const navigate = useNavigate();
-	const { id } = useParams();
 
 	const handleSubmit = async (e): Promise<void> => {
 		e.preventDefault();
@@ -36,7 +35,6 @@ export function PetRegisterForm(props: PetRegisterForm): JSX.Element {
 			}
 		}
 	};
-
 	return (
 		<form className={css.form__container} onSubmit={handleSubmit}>
 			<InputLabel labelText='Nombre:' name='name' type='text' placeholder='Manchas' />

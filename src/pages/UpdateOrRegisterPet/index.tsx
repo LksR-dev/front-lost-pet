@@ -12,9 +12,12 @@ export function ReportOrUpdatePet(): JSX.Element {
 	const { id } = useParams();
 
 	const hasPetReportOrUpdated = (petReport): void => {
+		console.log(petReport);
 		petReport ? setHasPet(true) : setHasPet(false);
 		setCloseCard(false);
-		petReport.petDeleted ? setHasPetDeleted(true) : setHasPetDeleted(false);
+		if (petReport.petDeleted) {
+			setHasPetDeleted(true);
+		}
 	};
 	const optionCard = (iconClose): void => {
 		if (iconClose) {

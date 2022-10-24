@@ -144,11 +144,7 @@ export async function updatePet(
 	return data;
 }
 
-export async function deletePet(
-	id: number,
-
-	token: string,
-): Promise<any> {
+export async function deletePet(id: number, token: string): Promise<any> {
 	const res: Response = await fetch(`${API_BASE_URL}/me/pet/${id}`, {
 		method: 'DELETE',
 		headers: {
@@ -158,4 +154,28 @@ export async function deletePet(
 	});
 	const data = await res.json();
 	return data;
+}
+
+export async function reportDataPet(
+	id: number,
+	fullName: string,
+	data: string,
+	phone_number: number,
+	token: string,
+): Promise<any> {
+	const res: Response = await fetch(`${API_BASE_URL}/report-pet`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `bearer ${token}`,
+		},
+		body: JSON.stringify({
+			fullName,
+			phone_number,
+			petId: id,
+			data,
+		}),
+	});
+	const json = await res.json();
+	return json;
 }

@@ -20,7 +20,7 @@ export function InputLabel(props: Input) {
 				type={props.type}
 				name={props.name}
 				placeholder={props.placeholder}
-				defaultValue={props.value}
+				defaultValue={props.value ? props.value : null}
 				required
 			/>
 		</label>

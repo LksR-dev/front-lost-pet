@@ -14,6 +14,8 @@ const Map = ReactMapboxGl({
 export function Mapbox(props): JSX.Element {
 	const locationMarker = markerUrl.default;
 	const [loc, setLoc] = useState('');
+	const [lng, setLng] = useState(null);
+	const [lat, setLat] = useState(null);
 	const [petData, setPetData] = usePetData();
 	const [userData, setUserData] = useUserData();
 
@@ -24,6 +26,7 @@ export function Mapbox(props): JSX.Element {
 				`https://api.mapbox.com/geocoding/v5/mapbox.places/${loc}.json?access_token=${mapbox_token}`,
 			)
 		).json();
+
 		// ACA SETEO EL NAME Y LAS COORDENADAS
 		setPetData({
 			...petData,
@@ -32,6 +35,10 @@ export function Mapbox(props): JSX.Element {
 			lng: features[0].geometry.coordinates[0],
 		});
 	}
+
+	useEffect(() => {
+		setPetData({ ...petData, lat, lng });
+	}, [lng]);
 
 	return (
 		<div className={css.container}>
@@ -43,7 +50,8 @@ export function Mapbox(props): JSX.Element {
 				}}
 				onClick={(_, mapData: any) => {
 					const { lng, lat } = mapData.lngLat;
-					setPetData({ ...petData, lng, lat });
+					setLat(lat);
+					setLng(lng);
 				}}
 				center={[petData.lng, petData.lat]}
 				zoom={[15]}
