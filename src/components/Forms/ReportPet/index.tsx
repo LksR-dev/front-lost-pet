@@ -40,7 +40,7 @@ export function PetRegisterForm(props: PetRegisterForm): JSX.Element {
 			<InputLabel labelText='Nombre:' name='name' type='text' placeholder='Manchas' />
 			<MyDropzone />
 			<Mapbox />
-			<Button color='green' children='Reportar' />
+			<Button color='dark__blue' children='Reportar' />
 			<Button action={() => navigate('/')} color='gray' children='Cancelar' />
 		</form>
 	);

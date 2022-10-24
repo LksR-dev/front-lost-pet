@@ -7,7 +7,7 @@ import { useUserData } from 'hooks';
 import css from './index.css';
 
 type ReportDataPetForm = {
-	onReportData: ({}) => any;
+	onReportData: (report: boolean) => any;
 };
 
 export function ReportDataPetForm(props: ReportDataPetForm): JSX.Element {
@@ -22,8 +22,12 @@ export function ReportDataPetForm(props: ReportDataPetForm): JSX.Element {
 		const token: string = userDataState.token;
 
 		if (fullname && phone_number && data && token && id) {
-			const petReported = await reportDataPet(Number(id), fullname, data, phone_number, token);
-			console.log(petReported);
+			try {
+				await reportDataPet(Number(id), fullname, data, phone_number, token);
+				props.onReportData(true);
+			} catch {
+				props.onReportData(false);
+			}
 		}
 	};
 
@@ -36,13 +40,16 @@ export function ReportDataPetForm(props: ReportDataPetForm): JSX.Element {
 				type='number'
 				placeholder='66677788'
 			/>
-			<textarea
-				className={css.text}
-				name='data'
-				id='data'
-				placeholder='Vi a la mascota corriendo por...'
-			></textarea>
-			<Button color='green' children='Enviar' />
+			<label className={css.label__container}>
+				INFORMACIÓN:
+				<textarea
+					className={css.text}
+					name='data'
+					id='data'
+					placeholder='Vi a la mascota corriendo por...'
+				></textarea>
+			</label>
+			<Button color='dark__blue' children='Enviar' />
 		</form>
 	);
 }

@@ -3,14 +3,14 @@ import css from './main-button.css';
 
 type MainButton = {
 	children: string;
-	color: 'green' | 'yellow' | 'gray';
+	color: 'dark__blue' | 'yellow' | 'gray';
 	action?: () => void;
 };
 
 export function Button(props: MainButton) {
 	const backgroundColor = () => {
-		if (props.color === 'green') {
-			return css.green;
+		if (props.color === 'dark__blue') {
+			return css.dark__blue;
 		} else if (props.color === 'yellow') {
 			return css.yellow;
 		} else {

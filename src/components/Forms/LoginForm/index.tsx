@@ -57,7 +57,7 @@ export function LoginForm(props: LoginForm): JSX.Element {
 				type={props.inputType}
 				placeholder={props.inputPlaceH}
 			/>
-			<Button color='green' children='Siguiente' />
+			<Button color='dark__blue' children='Siguiente' />
 		</form>
 	);
 }

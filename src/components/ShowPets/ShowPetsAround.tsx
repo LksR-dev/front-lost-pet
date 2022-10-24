@@ -59,7 +59,7 @@ export function ShowPetsAroundTo() {
 
 			{loader ? <LoaderLogo /> : null}
 			{userLat && userLng ? null : (
-				<Button action={getCurrentUbication} color='green' children={'Buscar mascotas'} />
+				<Button action={getCurrentUbication} color='dark__blue' children={'Buscar mascotas'} />
 			)}
 		</section>
 	);

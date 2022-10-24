@@ -12,7 +12,6 @@ export function ReportOrUpdatePet(): JSX.Element {
 	const { id } = useParams();
 
 	const hasPetReportOrUpdated = (petReport): void => {
-		console.log(petReport);
 		petReport ? setHasPet(true) : setHasPet(false);
 		setCloseCard(false);
 		if (petReport.petDeleted) {
@@ -42,7 +41,7 @@ export function ReportOrUpdatePet(): JSX.Element {
 			{hasPet && !closeCard ? (
 				<WarningCard
 					optionCard={(iconClose) => optionCard(iconClose)}
-					title='Tu mascota se reporto correctamente.'
+					title='Tu mascota se reportó correctamente.'
 					buttonText='Ir al inicio'
 				/>
 			) : null}
@@ -75,13 +74,6 @@ export function ReportOrUpdatePet(): JSX.Element {
 				<WarningCard
 					optionCard={(iconClose) => optionCard(iconClose)}
 					title='Tu mascota se borró correctamente.'
-					buttonText='Ir al inicio'
-				/>
-			) : null}
-			{!hasPetDeleted && !closeCard && id ? (
-				<WarningCard
-					optionCard={(iconClose) => optionCard(iconClose)}
-					title='Hubo problemas para borrar tu mascota, recargue la página e intente nuevamente.'
 					buttonText='Ir al inicio'
 				/>
 			) : null}

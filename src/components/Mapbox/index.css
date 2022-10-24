@@ -5,7 +5,8 @@
 }
 
 .green__button {
-	background-color: #00e2b1;
+	background-color: #264653;
+	color: #ffff;
 	font-weight: bold;
 	text-align: center;
 	width: 200px;

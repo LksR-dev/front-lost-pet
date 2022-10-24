@@ -23,7 +23,7 @@ export function WarningCard(props: WarningCard) {
 				<img src={bonesPet} />
 			</div>
 			<h3 className={css.title}>{props.title}</h3>
-			<Button action={goTo} children={props.buttonText} color='green' />
+			<Button action={goTo} children={props.buttonText} color='dark__blue' />
 		</section>
 	);
 }

@@ -44,7 +44,7 @@ export function UpdateUserForm(props: LoginForm): JSX.Element {
 				placeholder='••••••••'
 			/>
 			{hasPassword ? null : <p>Las contraseñas no coinciden</p>}
-			<Button color='green' children='Actualizar' />
+			<Button color='dark__blue' children='Actualizar' />
 		</form>
 	);
 }

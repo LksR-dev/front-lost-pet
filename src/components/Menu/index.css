@@ -19,7 +19,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	background: #9af188;
+	background: #264653;
 	transition: 0.5s;
 }
 .nav__ul.open {
@@ -34,6 +34,6 @@
 	font-size: 20px;
 	text-align: center;
 	line-height: 18px;
-	color: #000;
+	color: #ffff;
 	cursor: pointer;
 }

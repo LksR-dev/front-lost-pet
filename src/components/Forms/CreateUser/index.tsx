@@ -41,7 +41,7 @@ export function CreateUserForm(props: LoginForm): JSX.Element {
 				placeholder='••••••••'
 			/>
 			{hasPassword ? null : <p>Las contraseñas no coinciden</p>}
-			<Button color='green' children='Guardar' />
+			<Button color='dark__blue' children='Guardar' />
 		</form>
 	);
 }

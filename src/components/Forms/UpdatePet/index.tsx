@@ -83,12 +83,12 @@ export function UpdateDataPetForm(props: PetRegisterForm): JSX.Element {
 				location={{ lat: actualPet.lat, lng: actualPet.lng }}
 				ubication={actualPet.ubication ? actualPet.ubication : null}
 			/>
-			<Button color='green' children='Actualizar' />
+			<Button color='dark__blue' children='Actualizar' />
 			<Button
 				action={() => {
 					handleDelete();
 				}}
-				color='green'
+				color='dark__blue'
 				children='Eliminar'
 			/>
 			<Button action={() => navigate('/')} color='gray' children='Cancelar' />

@@ -56,7 +56,7 @@ export function Menu(): JSX.Element {
 
 				{userData.token ? (
 					<div>
-						<p>{userData.email}</p>
+						<p style={{ color: '#ffff', fontWeight: 'bold' }}>{userData.email}</p>
 						<CloseSessionButton />
 					</div>
 				) : null}
