@@ -42,7 +42,7 @@ export function ShowPetsAroundTo() {
 	return (
 		<section>
 			<div className={css.main__container}>
-				{pets ? (
+				{pets.length > 0 ? (
 					pets.map((pet) => (
 						<PetCard
 							key={pet.objectID}
@@ -53,7 +53,7 @@ export function ShowPetsAroundTo() {
 						/>
 					))
 				) : (
-					<p>No hay mascotas cerca tuyo.</p>
+					<h4>No hay mascotas perdidas cerca tuyo.</h4>
 				)}
 			</div>
 

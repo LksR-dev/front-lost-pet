@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MyDropzone } from 'components/Dropzone';
 import { Mapbox } from 'components/Mapbox';
+import { LoaderLogo } from 'components/Loader/LogoLoader';
 import { InputLabel } from 'ui/inputs';
 import { Button } from 'ui/buttons/MainButton';
 import { getOnePet, updatePet, deletePet } from 'lib/api';
 import { useUserData, usePetData } from 'hooks';
+
 import css from './index.css';
 
 type PetRegisterForm = {
@@ -15,6 +17,7 @@ type PetRegisterForm = {
 export function UpdateDataPetForm(props: PetRegisterForm): JSX.Element {
 	const [userDataState, setUserData] = useUserData();
 	const [petData, setPetData] = usePetData();
+	const [isLoading, setIsLoading] = useState(false);
 	const [actualPet, setActualPet] = useState({
 		petname: '',
 		img: '',
@@ -39,6 +42,7 @@ export function UpdateDataPetForm(props: PetRegisterForm): JSX.Element {
 
 	const handleSubmit = async (e): Promise<void> => {
 		e.preventDefault();
+		setIsLoading(true);
 		const data = petData as any;
 		const img = data.img;
 		const lat = data.lat;
@@ -48,17 +52,11 @@ export function UpdateDataPetForm(props: PetRegisterForm): JSX.Element {
 		setPetData({ ...petData, petname });
 		if (img && lat && lng && petname && ubication) {
 			try {
-				const pet = await updatePet(
-					Number(id),
-					petname,
-					img,
-					lat,
-					lng,
-					ubication,
-					userDataState.token,
-				);
+				await updatePet(Number(id), petname, img, lat, lng, ubication, userDataState.token);
 				props.onUpdatePet(true);
+				setIsLoading(false);
 			} catch {
+				setIsLoading(false);
 				props.onUpdatePet(false);
 			}
 		}
@@ -70,28 +68,34 @@ export function UpdateDataPetForm(props: PetRegisterForm): JSX.Element {
 	};
 
 	return (
-		<form className={css.form__container} onSubmit={handleSubmit}>
-			<InputLabel
-				labelText='Nombre:'
-				name='name'
-				type='text'
-				placeholder='Manchas'
-				value={actualPet.petname ? actualPet.petname : ''}
-			/>
-			<MyDropzone img={actualPet.img ? actualPet.img : null} />
-			<Mapbox
-				location={{ lat: actualPet.lat, lng: actualPet.lng }}
-				ubication={actualPet.ubication ? actualPet.ubication : null}
-			/>
-			<Button color='dark__blue' children='Actualizar' />
-			<Button
-				action={() => {
-					handleDelete();
-				}}
-				color='dark__blue'
-				children='Eliminar'
-			/>
-			<Button action={() => navigate('/')} color='gray' children='Cancelar' />
-		</form>
+		<>
+			{isLoading ? (
+				<LoaderLogo />
+			) : (
+				<form className={css.form__container} onSubmit={handleSubmit}>
+					<InputLabel
+						labelText='Nombre:'
+						name='name'
+						type='text'
+						placeholder='Manchas'
+						value={actualPet.petname ? actualPet.petname : ''}
+					/>
+					<MyDropzone img={actualPet.img ? actualPet.img : null} />
+					<Mapbox
+						location={{ lat: actualPet.lat, lng: actualPet.lng }}
+						ubication={actualPet.ubication ? actualPet.ubication : null}
+					/>
+					<Button color='dark__blue' children='Actualizar' />
+					<Button
+						action={() => {
+							handleDelete();
+						}}
+						color='dark__blue'
+						children='Eliminar'
+					/>
+					<Button action={() => navigate('/')} color='gray' children='Cancelar' />
+				</form>
+			)}
+		</>
 	);
 }

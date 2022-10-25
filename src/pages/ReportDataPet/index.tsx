@@ -29,8 +29,6 @@ export function ReportDataPet(): JSX.Element {
 		}
 	};
 
-	console.log(hasPetReport);
-
 	return (
 		<main className={css.container}>
 			<h2>Reportar info de {actualPet.petname}.</h2>
