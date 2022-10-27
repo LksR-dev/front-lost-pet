@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useUserData, useGoTo } from 'hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './index.css';
 const defaultSvg = require('assets/pencil.svg');
@@ -12,13 +13,20 @@ type PetCard = {
 
 export function PetCard(props: PetCard): JSX.Element {
 	const [isMyPets, setIsMyPets] = useState(false);
+	const [userData, setUserData] = useUserData();
+	const [goTo, setGoTo] = useGoTo();
 	let location = useLocation();
 	const navigate = useNavigate();
 	const pathName = location.pathname;
 	const pencil = defaultSvg.default;
 
 	const goToReport = (petId): void => {
-		navigate(`report-pet/${petId}`);
+		if (userData.token) {
+			navigate(`report-pet/${petId}`);
+		} else {
+			setGoTo(`/report-pet/${petId}`);
+			navigate('verify-email');
+		}
 	};
 
 	const goToEdit = (petId): void => {

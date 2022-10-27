@@ -23,7 +23,7 @@ export function ShowMyPets() {
 
 	return (
 		<section>
-			<div className={css.main__container}>
+			<div className={pets.length > 0 ? css.main__container__grid : css.main__container__flex}>
 				{pets ? (
 					pets.map((pet) => {
 						return (

@@ -1,4 +1,4 @@
-.main__container {
+.main__container__grid {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -7,7 +7,7 @@
 }
 
 @media (min-width: 723px) {
-	.main__container {
+	.main__container__grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(5, 1fr);
@@ -17,11 +17,16 @@
 }
 
 @media (min-width: 1025px) {
-	.main__container {
+	.main__container__grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(5, 1fr);
 		grid-column-gap: 40px;
 		grid-row-gap: 25px;
 	}
+}
+
+.main__container__flex {
+	display: flex;
+	justify-content: center;
 }
