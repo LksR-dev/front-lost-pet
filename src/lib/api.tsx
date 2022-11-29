@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://lost-pet-dwfm7.herokuapp.com';
+const API_BASE_URL = 'https://api-lostpet.onrender.com';
 
 export async function getPetsAroundTo(lat: number, lng: number): Promise<[]> {
 	const res: Response = await fetch(`${API_BASE_URL}/pets-around?lat=${lat}&lng=${lng}`);
